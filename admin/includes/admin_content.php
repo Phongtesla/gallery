@@ -8,16 +8,7 @@
             <small>Subheading</small>
             <?php
                 $user = User::find_user_by_id(1);
-                echo $user->username;
-
-                // $users = User::find_all_users();
-                // foreach ($users as $user => $value) {
-                //     # code...
-                // }
-                // echo "<pre>";
-                // print_r($users);
-                // echo "</pre>";
-                
+                $user->delete();
             
             
             

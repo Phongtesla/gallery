@@ -9,3 +9,6 @@ function __autoload($class){
         die("This file {$the_path} was not found !!!");
     }
 }
+function redirect($location){
+    header("Location: {$location}");
+}
