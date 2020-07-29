@@ -7,8 +7,9 @@
             Blank Page
             <small>Subheading</small>
             <?php
-                $user = User::find_user_by_id(1);
-                $user->delete();
+                $user = User::find_by_id(10);
+                $user->username = "Nguvailol";
+                $user->update();
             
             
             
