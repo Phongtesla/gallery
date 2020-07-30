@@ -7,13 +7,12 @@
             Blank Page
             <small>Subheading</small>
             <?php
-                $user = User::find_by_id(10);
-                $user->username = "Nguvailol";
-                $user->update();
-            
-            
-            
-            
+                // $user = new User();
+                // $user->username = "Nguvailol";
+                // $user->password = "Ngulv2";
+                // $user->fullname = "Nguvailol.jpg";
+                // $user->create();
+                // echo INCLUDES_PATH;
             ?>
         </h1>
         <ol class="breadcrumb">
