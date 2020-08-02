@@ -2,7 +2,7 @@
 
 class Db_object
 {
-    protected static $db_table = "user";
+    protected static $db_table;
     protected static $db_table_fields = array('username', 'password', 'fullname');
     public static function find_all()
     {
