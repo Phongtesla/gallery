@@ -4,8 +4,8 @@
 } ?>
 <?php
 if (empty($_GET['id'])) {
-    // redirect("../photos.php");
-    echo "đỵt con ,mẹ mày";
+    redirect("photos.php");
+    
 } else {
     $photo = Photo::find_by_id($_GET['id']);
     if (isset($_POST['update'])) {
@@ -47,6 +47,9 @@ if (empty($_GET['id'])) {
                         <div class="form-group">
                         <label for="caption">Title</label>
                             <input type="text" name="title" class="form-control" value="<?php echo $photo->title ?>">
+                        </div>
+                        <div class="form-group thumbnail">
+                            <img width="200px" height="100px" class="" src="<?php echo $photo->picture_path() ?>" alt="">
                         </div>
                         <div class="form-group">
                             <label for="caption">Caption</label>
