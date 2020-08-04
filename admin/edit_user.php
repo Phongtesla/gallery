@@ -3,18 +3,24 @@
     redirect("login.php");
 } ?>
 <?php
-
-$user = new User();
-if (isset($_POST['create'])) {
-    if ($user) {
-        $user->username =  $_POST['username'];
-        $user->fullname =  $_POST['fullname'];
-        $user->password = $_POST['password'];
-        $user->set_file($_FILES['user_image']);
-        $user->upload_photo();
-
+if (empty($_GET['id'])) {
+    redirect("users.php");
+    
+} else {
+    $user = User::find_by_id($_GET['id']);
+    if (isset($_POST['update'])) {
+        if ($user) {
+            $user->username =  $_POST['username'];
+            $user->fullname =  $_POST['fullname'];
+            $user->password = $_POST['password'];
+            $user->set_file($_FILES['user_image']);
+            $user->upload_photo();      
+              $user->save();
+        }
+      
     }
-  
+    
+
 }
 
 
@@ -40,26 +46,30 @@ if (isset($_POST['create'])) {
                     User
                     <small>Subheading</small>
                 </h1>
+                <div class="col-md-6">
+                    <img height="100px" width="200px" src="<?php echo $user->image_path_and_placeholder() ?>" alt="">
+                </div>
                 <form action="" enctype="multipart/form-data" method="post">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-6 ">
                         <div class="form-group">
                             <input type="file" name="user_image">
                         </div>
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" name="username" class="form-control">
+                            <input type="text" name="username" class="form-control" value="<?php echo $user->username ?>">
                         </div>
                         <div class="form-group">
                             <label for="fullname">Fullname</label>
-                            <input type="text" name="fullname" class="form-control">
+                            <input type="text" name="fullname" class="form-control" value="<?php echo $user->fullname ?>">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control">
+                            <input type="password" name="password" class="form-control" value="<?php echo $user->password ?>">
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="create" class=" btn-primary btn pull-right">
+                            <input type="submit" name="update" class=" btn-primary btn pull-right">
                         </div>
+                            <a href="delete_user.php?id=<?php echo $user->id ?>" class="btn btn-danger">Delete</a>
                     </div>
                 </form>
             </div>
