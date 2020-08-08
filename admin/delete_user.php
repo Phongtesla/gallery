@@ -4,9 +4,9 @@
     if (empty($_GET['id'])) {
         redirect("users.php");
     }
-    $photo = User::find_by_id($_GET['id']);
-    if ($photo) {
-        $photo->delete();
+    $user = User::find_by_id($_GET['id']);
+    if ($user) {
+        $user->delete();
         redirect("users.php");
     }else {
         redirect("users.php");
